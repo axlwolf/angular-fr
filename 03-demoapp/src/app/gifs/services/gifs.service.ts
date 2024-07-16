@@ -2,7 +2,8 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Gif, SearchResponse } from '../interfaces/gifs.interfaces';
 
-const GIPHY_API_URL: string = 'ilM6tX3iCaBRUQ8Rq7rb6oe3XC8sKAiH';
+const GIPHY_API_URL: string = 'PJOmP8plfGdra9RRN9w8i03ZGrMqwTnt';
+// const GIPHY_API_URL: string = 'ilM6tX3iCaBRUQ8Rq7rb6oe3XC8sKAiH';
 const SERVICE_URL: string = 'https://api.giphy.com/v1/gifs/';
 
 @Injectable({ providedIn: 'root' })
