@@ -1,0 +1,71 @@
+<ng-template #loading>
+  <div class="row">
+    <div class="col-12">
+      <div class="alert alert-info text-center">Wait please...</div>
+    </div>
+  </div>
+</ng-template>
+
+<div *ngIf="country; else loading">
+  <div class="row">
+    <div class="col-12">
+      <h2>
+        Country Page: <strong>{{ country.name.common }}</strong>
+      </h2>
+      <hr />
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-4">
+      <h3>Flag</h3>
+      <img
+        [src]="country.flags.svg"
+        class="img-thumbnail"
+        [alt]="country.name.common"
+      />
+    </div>
+    <div class="col">
+      <h3>Country Info:</h3>
+      <ul class="list-troup">
+        <li class="list-group-item">
+          <strong>Name: </strong>
+          {{ country.name.common }}
+        </li>
+        <li class="list-group-item">
+          <strong>Population: </strong> {{ country.population | number }}
+        </li>
+        <li class="list-group-item">
+          <strong>Code: </strong> {{ country.cca3 }}
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="row mt-2">
+    <div class="col">
+        <h3>Translations:</h3>
+
+        <div class="d-flex flex-wrap">
+            <span class="badge bg-primary m-1">
+                {{ country.translations['ara'].official }}
+            </span>
+            <span class="badge bg-primary m-1">
+                {{ country.translations['spa'].common }}
+            </span>
+            <span class="badge bg-primary m-1">
+                {{ country.translations['fra'].common }}
+            </span>
+            <span class="badge bg-primary m-1">
+                {{ country.translations['por'].common }}
+            </span>
+            <span class="badge bg-primary m-1">
+                {{ country.translations['ita'].common }}
+            </span>
+            <span class="badge bg-primary m-1">
+                {{ country.translations['jpn'].common }}
+            </span>
+        </div>
+    </div>
+  </div>
+</div>
