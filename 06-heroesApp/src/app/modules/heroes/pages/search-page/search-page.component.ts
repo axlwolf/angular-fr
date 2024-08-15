@@ -12,6 +12,7 @@ import { MatAutocompleteSelectedEvent } from '@angular/material/autocomplete';
 })
 export class SearchPageComponent {
   public searchInput = new FormControl();
+  public searchHeroControl = new FormControl();
   public heroes: Hero[] = [];
   public selectedHero?: Hero;
 
@@ -20,10 +21,23 @@ export class SearchPageComponent {
   searchHero() {
     const value: string = this.searchInput.value || '';
     if (value === '') this.heroes = [];
-    this.heroesService
-      .getSuggestions(value)
-      .pipe(tap((heroes) => console.log({ heroes })))
-      .subscribe((heroes) => (this.heroes = heroes));
+    else {
+      this.heroesService
+        .getSuggestions(value)
+        .pipe(tap((heroes) => console.log({ heroes })))
+        .subscribe((heroes) => (this.heroes = heroes));
+    }
+  }
+
+  superHero2() {
+    const value: string = this.searchHeroControl.value || '';
+    if (value === '') this.heroes = [];
+    else {
+      this.heroesService
+        .getSuggestions(value)
+        .pipe(tap((heroes) => console.log({ heroes })))
+        .subscribe((heroes) => (this.heroes = heroes));
+    }
   }
 
   onSelectedOption(event: MatAutocompleteSelectedEvent): void {
