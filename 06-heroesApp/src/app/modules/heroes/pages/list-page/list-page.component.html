@@ -1,1 +1,13 @@
-<p>list-page works!</p>
+<!-- <ul>
+  <li *ngFor="let heroe of heroes">
+    {{ heroe.superhero }}
+  </li>
+</ul> -->
+<h2>Heroes list</h2>
+<mat-divider> </mat-divider>
+
+<div class="grid">
+  <div *ngFor="let hero of heroes" class="col-12 md:col-6 lg:col-3">
+    <heroes-hero-card [hero]="hero"></heroes-hero-card>
+  </div>
+</div>
