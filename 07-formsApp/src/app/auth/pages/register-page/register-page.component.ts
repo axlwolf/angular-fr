@@ -8,27 +8,39 @@ import { EmailValidator } from '../../../shared/validators/email-validator.servi
   templateUrl: './register-page.component.html',
 })
 export class RegisterPageComponent {
-  public myForm: FormGroup = this.fb.group({
-    name: [
-      '',
-      [
-        Validators.required,
-        Validators.pattern(this.validatorsService.firstNameAndLastnamePattern),
+  public myForm: FormGroup = this.fb.group(
+    {
+      name: [
+        '',
+        [
+          Validators.required,
+          Validators.pattern(
+            this.validatorsService.firstNameAndLastnamePattern
+          ),
+        ],
       ],
-    ],
-    email: [
-      '',
-      [
-        Validators.required,
-        Validators.pattern(this.validatorsService.emailPattern),
+      email: [
+        '',
+        [
+          Validators.required,
+          Validators.pattern(this.validatorsService.emailPattern),
+        ],
+        //[new EmailValidator()],
+        [this.emailValidator],
       ],
-      //[new EmailValidator()],
-      [this.emailValidator],
-    ],
-    username: ['', [Validators.required, this.validatorsService.cantBeStrider]],
-    password: ['', [Validators.required, Validators.minLength(6)]],
-    password2: ['', [Validators.required]],
-  });
+      username: [
+        '',
+        [Validators.required, this.validatorsService.cantBeStrider],
+      ],
+      password: ['', [Validators.required, Validators.minLength(6)]],
+      password2: ['', [Validators.required]],
+    },
+    {
+      validators: [
+        this.validatorsService.isFieldOneEqualFoeldTwo('password', 'password2'),
+      ],
+    }
+  );
 
   constructor(
     private fb: FormBuilder,
