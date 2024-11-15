@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 
 import { Country, Region, SmallCountry } from '../country.interfaces';
 
-import { map, Observable, of, tap } from 'rxjs';
+import {combineLatest, map, Observable, of, tap} from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -42,11 +42,27 @@ export class CountriesService {
 
   getCountryByAlphaCode(alphaCode: string): Observable<SmallCountry> {
     const url = `${this._baseUrl}/alpha/${alphaCode}?fields=cca3,name,borders`;
-    return this.http.get<SmallCountry>(url);
+    return this.http.get<Country>(url).pipe(
+      map((country) => ({
+        name: country.name.common,
+        cca3: country.cca3,
+        borders: country.borders ?? [],
+      }))
+    );
   }
 
-  getCountryBordersByCodes(borders: string[]): Observable<SmallCountry[]> {
+  getCountriesBordersByCodes(borders: string[]): Observable<SmallCountry[]> {
     //restcountries.com/v3.1/region/europe?fields=cca3,name,borders
-    return of([]);
+    if(!borders || borders.length === 0) return of([]);
+
+    const countriesRequests: Observable<SmallCountry>[] = [];
+
+    borders.forEach((code) => {
+      const request = this.getCountryByAlphaCode(code);
+
+      countriesRequests.push(request);
+    })
+
+    return combineLatest(countriesRequests);
   }
 }

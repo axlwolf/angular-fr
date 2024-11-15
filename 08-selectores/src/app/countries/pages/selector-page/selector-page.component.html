@@ -34,10 +34,10 @@
       </div>
       <div class="border-b border-gray-900/10 pb-12">
         <div class="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
-          <!-- Region -->
-          <div class="sm:col-span-3">
+          <!-- Countries -->
+          <div class="sm:col-span-3" *ngIf="countriesByRegion.length > 0">
             <label for="pais" class="block text-sm/6 font-medium text-gray-900"
-              >País</label
+            >País</label
             >
             <div class="mt-2">
               <select
@@ -50,6 +50,30 @@
                 <option
                   *ngFor="let country of countriesByRegion"
                   [value]="country.cca3"
+                >
+                  {{ country.name }}
+                </option>
+              </select>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="border-b border-gray-900/10 pb-12">
+        <div class="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
+          <!-- Borders -->
+          <div class="sm:col-span-3" *ngIf="borders.length > 0">
+            <label for="border" class="block text-sm/6 font-medium text-gray-900">Fronteras</label>
+            <div class="mt-2">
+              <select
+                formControlName="border"
+                id="border"
+                name="border"
+                class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm/6"
+              >
+                <option>-- Seleccione la frontera --</option>
+                <option
+                  *ngFor="let country of borders"
+                  [value]="country.name"
                 >
                   {{ country.name }}
                 </option>
