@@ -1,0 +1,71 @@
+<div class="space-y-12 mt-2 ml-4">
+  <div class="border-b border-gray-900/10 pb-12">
+    <h1 class="text-3xl font-bold">Selectores anidados</h1>
+  </div>
+</div>
+<div class="px-4">
+  <div class="sm:flex sm:items-center"></div>
+  <form [formGroup]="myForm">
+    <div class="space-y-12">
+      <div class="border-b border-gray-900/10 pb-12">
+        <div class="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
+          <!-- Region -->
+          <div class="sm:col-span-3">
+            <label
+              for="continente"
+              class="block text-sm/6 font-medium text-gray-900"
+              >Continente</label
+            >
+            <div class="mt-2">
+              <select
+                formControlName="region"
+                id="continente"
+                name="continente"
+                class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm/6"
+              >
+                <option>-- Seleccione Continente --</option>
+                <option *ngFor="let region of regions" [value]="region">
+                  {{ region }}
+                </option>
+              </select>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="border-b border-gray-900/10 pb-12">
+        <div class="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
+          <!-- Region -->
+          <div class="sm:col-span-3">
+            <label for="pais" class="block text-sm/6 font-medium text-gray-900"
+              >País</label
+            >
+            <div class="mt-2">
+              <select
+                formControlName="country"
+                id="pais"
+                name="pais"
+                class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm/6"
+              >
+                <option>-- Seleccione país --</option>
+                <option
+                  *ngFor="let country of countriesByRegion"
+                  [value]="country.cca3"
+                >
+                  {{ country.name }}
+                </option>
+              </select>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
+
+<section class="px-4">
+  <h3>Formulario</h3>
+  <code>
+    {{ myForm.value | json }}
+  </code>
+  <p>Is form valid: {{ myForm.valid }}</p>
+</section>
