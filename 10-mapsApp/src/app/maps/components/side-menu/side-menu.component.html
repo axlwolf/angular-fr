@@ -1,11 +1,9 @@
-<nav class="maps-side-menu">
-  <ul class="list-group">
-    <li *ngFor="let item of menuItems"
-        class="list-group-item"
-        [routerLink]="[item.route]"
-        routerLinkActive="active"
-    >
-      {{ item.name }}
-    </li>
-  </ul>
-</nav>
+<ul class="list-group">
+  <li *ngFor="let item of menuItems"
+      class="list-group-item"
+      [routerLink]="[item.route]"
+      routerLinkActive="active"
+  >
+    {{ item.name }}
+  </li>
+</ul>
