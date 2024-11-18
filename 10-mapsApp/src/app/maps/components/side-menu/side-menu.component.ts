@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 
 interface MenuItem {
   name: string;
@@ -12,7 +12,7 @@ interface MenuItem {
 })
 export class SideMenuComponent {
 
-  public menuItems: MenuItem[]= [
+  public menuItems: MenuItem[] = [
     {
       route: '/maps/fullscreen', name: "Full-Screen",
     },
@@ -24,6 +24,9 @@ export class SideMenuComponent {
     },
     {
       route: '/maps/properties', name: "Properties",
+    },
+    {
+      route: '/alone', name: "Alone",
     }
   ];
 
