@@ -20,16 +20,16 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have as title '10-mapsApp'`, () => {
+  it(`should have as title '11-directiveSignals'`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
-    expect(app.title).toEqual('10-mapsApp');
+    expect(app.title).toEqual('11-directiveSignals');
   });
 
   it('should render title', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('h1')?.textContent).toContain('Hello, 10-mapsApp');
+    expect(compiled.querySelector('h1')?.textContent).toContain('Hello, 11-directiveSignals');
   });
 });
